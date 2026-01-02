@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 function Welcome({ passData }) {
     const [user, setUser] = useState(
-        localStorage.getItem("username") || "User",
+        localStorage.getItem("username") || "User"
     );
     const [change, setChange] = useState(true);
     let inpFocus = useRef("");
@@ -19,6 +19,7 @@ function Welcome({ passData }) {
                 "firstLogin",
                 `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
             );
+        localStorage.getItem("username") && passData(localStorage.getItem("username);
     }, []);
 
     // Functions
@@ -86,3 +87,4 @@ function Welcome({ passData }) {
 }
 
 export default Welcome;
+
