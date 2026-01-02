@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
 function Welcome({ passData }) {
-    const [user, setUser] = useState("User");
+    const [user, setUser] = useState(
+        localStorage.getItem("username") || "User",
+    );
     const [change, setChange] = useState(true);
     let inpFocus = useRef("");
 
@@ -12,9 +14,9 @@ function Welcome({ passData }) {
 
     useEffect(() => {
         const date = new Date();
-        !localStorage.getItem("loginTime") &&
+        !localStorage.getItem("firstLogin") &&
             localStorage.setItem(
-                "loginTime",
+                "firstLogin",
                 `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
             );
     }, []);
@@ -23,19 +25,23 @@ function Welcome({ passData }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setChange(true);
-        passData(user);
+        let loggedUser = localStorage.getItem("username");
+        loggedUser ? passData(loggedUser) : passData(user);
     };
 
     const handleDate = () => {
         const date = new Date();
         return (
-            localStorage.getItem("loginTime") ===
+            localStorage.getItem("firstLogin") ===
             `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
         );
     };
 
     const handleChange = (e) => {
-        if (e.key === "Enter") setUser(e.target.value);
+        if (e.key === "Enter") {
+            setUser(e.target.value);
+            localStorage.setItem("username", e.target.value);
+        }
     };
 
     // Render
