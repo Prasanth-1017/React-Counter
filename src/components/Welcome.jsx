@@ -48,7 +48,7 @@ function Welcome({ passData }) {
 
     // Render
     return (
-        <section className="flex h-[40%] lg:h-[30%] flex-col justify-center gap-8">
+        <section className="flex h-[40%] md:h-[30%] flex-col justify-center gap-8">
             <h1 className="text-center text-2xl font-bold">
                 {handleDate() ? "Welcome" : "Welcome Back"}
                 {user ? ` ${user}!` : " User!"}
@@ -88,3 +88,4 @@ function Welcome({ passData }) {
 }
 
 export default Welcome;
+
