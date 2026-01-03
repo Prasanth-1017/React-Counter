@@ -18,7 +18,7 @@ function Counter() {
     };
 
     return (
-        <section className="flex h-[60%] w-full flex-col items-center justify-center gap-8 lg:h-[70%]">
+        <section className="flex h-[60%] w-full flex-col items-center justify-center gap-8 md:h-[70%]">
             <h1 className="text-[5rem] font-bold">{value}</h1>
 
             <div className="flex w-3/4 items-center justify-around rounded-3xl border-2 border-black p-4 md:w-3/6 lg:w-2/5">
